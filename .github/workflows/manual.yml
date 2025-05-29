@@ -1,0 +1,17 @@
+name: Manual Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Which environment to deploy to'
+        required: true
+        type: environment
+
+run-name: Deploy "${{ github.ref_name }}" to "${{ github.event.inputs.environment }}" by @${{ github.actor }}
+
+jobs:
+  call-deploy:
+    uses: ./.github/workflows/deploy.yml
+    with:
+      environment: ${{ github.event.inputs.environment }}
