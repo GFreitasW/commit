@@ -1,7 +1,7 @@
 name: Deploy Action
 
 on:
-  workflow_call:
+  workflow_run:
     inputs:
       environment:
         type: string
