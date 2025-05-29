@@ -12,12 +12,12 @@ on:
 jobs:
   deploy-qa:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    uses: ./.github/workflows/actions/deploy.yml
+    uses: ./.github/deploy.yml
     with:
       environment: qa
 
   deploy-uat:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    uses: ./.github/workflows/actions/deploy.yml
+    uses: ./.github/deploy.yml
     with:
       environment: uat
