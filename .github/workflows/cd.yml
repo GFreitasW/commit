@@ -2,8 +2,7 @@ name: CD Pipeline
 
 on:
   workflow_call:
-    workflows:
-      - CI
+    workflows: ["CI"]
     types:
       - completed
     branches:
