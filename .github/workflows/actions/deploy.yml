@@ -1,0 +1,19 @@
+name: Deploy Action
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: environment
+        description: Select the environment
+        required: true
+
+jobs:
+  deploy:
+    name: Deploy to ${{ inputs.environment }}
+    environment: ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print deployment info
+        run: echo "Deploying to ${{ inputs.environment }}"

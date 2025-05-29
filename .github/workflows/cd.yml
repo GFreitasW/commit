@@ -1,0 +1,23 @@
+name: CD Pipeline
+
+on:
+  workflow_run:
+    workflows:
+      - CI
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  deploy-qa:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    uses: ./.github/workflows/actions/deploy.yml
+    with:
+      environment: qa
+
+  deploy-uat:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    uses: ./.github/workflows/actions/deploy.yml
+    with:
+      environment: uat

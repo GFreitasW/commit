@@ -2,8 +2,11 @@ name: Create Release on Tag
 
 on:
   push:
+    # still match all tags…
     tags:
       - '**'
+    tags-ignore:
+      - '**-dev'
 
 permissions:
   contents: write
