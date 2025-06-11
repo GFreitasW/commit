@@ -2,9 +2,8 @@ name: Create Release on Tag
 
 on:
   push:
-    tags:
-      - '!**-dev'
-      - '**'
+    tags-ignore:
+      - '**-dev'
 
 permissions:
   contents: write
@@ -21,6 +20,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name:                ${{ github.ref_name }}
+          prerelease:             true                    # set to true if this is a pre-release
           name:                    Release ${{ github.ref_name }}
           generate_release_notes:  true                     # auto-builds the notes
           token:                   ${{ secrets.GITHUB_TOKEN }}
