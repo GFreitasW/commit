@@ -36,7 +36,7 @@ jobs:
           toTag: ${{ github.ref_name }}
           configurationJson: |
             {
-              "template": "## What's Changed\n\n#{{CHANGELOG}}\n\n**Full Changelog**: #{{RELEASE_DIFF}}\n\n## Contributors\n\n#{{CONTRIBUTORS}}",
+              "template": "## What's Changed\n\n#{{CHANGELOG}}\n\n**Full Changelog**: #{{RELEASE_DIFF}}\n\n#",
               "pr_template": "* #{{TITLE}} by @#{{AUTHOR}} in ##{{NUMBER}}",
               "categories": [
                 {
