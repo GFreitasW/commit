@@ -34,6 +34,23 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fromTag: ${{ steps.params.outputs.base_ref }}
           toTag: ${{ github.ref_name }}
+          configurationJson: |
+            {
+              "template": "## What's Changed\n\n#{{CHANGELOG}}\n\n**Full Changelog**: #{{RELEASE_DIFF}}\n\n## Contributors\n\n#{{CONTRIBUTORS}}",
+              "pr_template": "* #{{TITLE}} by @#{{AUTHOR}} in ##{{NUMBER}}",
+              "categories": [
+                {
+                  "title": "",
+                  "labels": []
+                }
+              ],
+              "ignore_labels": [],
+              "sort": {
+                "order": "DESC",
+                "on_property": "mergedAt"
+              },
+              "trim_values": true
+            }
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
